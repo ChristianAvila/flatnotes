@@ -7,6 +7,9 @@ export default defineConfig({
   plugins: [vue()],
   root: "client",
   base: "",
+  build: {
+    assetsDir: "static"
+  },
   server: {
     // Note: The FLATNOTES_PATH_PREFIX environment variable is not supported by the dev server
     port: 8080,

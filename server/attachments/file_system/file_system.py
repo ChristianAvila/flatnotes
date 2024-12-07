@@ -11,6 +11,8 @@ from helpers import get_env, is_valid_filename
 from ..base import BaseAttachments
 from ..models import AttachmentCreateResponse
 
+from logger import logger
+
 
 class FileSystemAttachments(BaseAttachments):
     def __init__(self):
@@ -36,8 +38,10 @@ class FileSystemAttachments(BaseAttachments):
 
     def get(self, filename: str) -> FileResponse:
         """Get a specific attachment."""
+        logger.debug(f"from get {filename}")
         is_valid_filename(filename)
         filepath = os.path.join(self.storage_path, filename)
+        logger.debug(f"from get {filepath}")
         if not os.path.isfile(filepath):
             raise FileNotFoundError(f"'{filename}' not found.")
         return FileResponse(filepath)

@@ -195,6 +195,10 @@ def get_config():
     "/api/attachments/{filename}",
     dependencies=auth_deps,
 )
+@router.get(
+    "/assets/{filename}",
+    dependencies=auth_deps,
+)
 # Include a secondary route used to create relative URLs that can be used
 # outside the context of flatnotes (e.g. "/attachments/image.jpg").
 @router.get(
